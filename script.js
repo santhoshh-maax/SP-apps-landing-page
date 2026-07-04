@@ -423,6 +423,22 @@
     lastScroll = currentScroll;
   }, { passive: true });
 
+  document.querySelectorAll('.download-btn').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      var releaseUrl = this.getAttribute('href');
+      var tag = releaseUrl.substring(releaseUrl.lastIndexOf('/') + 1);
+      var api = 'https://api.github.com/repos/santhoshh-maax/SP-apps-landing-page/releases/tags/' + encodeURIComponent(tag);
+      fetch(api).then(function (r) { return r.json(); }).then(function (data) {
+        if (data && data.assets && data.assets.length > 0) {
+          window.location.href = data.assets[0].browser_download_url;
+        }
+      }).catch(function () {
+        window.location.href = releaseUrl;
+      });
+    });
+  });
+
   console.log('%c SP Apps Landing Page ', 'background:#6366f1;color:white;font-size:16px;padding:8px 12px;border-radius:4px;font-weight:bold;');
   console.log('%c Built with ❤️ using HTML, Tailwind, Three.js ', 'color:#94a3b8;font-size:12px;');
 })();
