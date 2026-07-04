@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SP Apps – Download My Applications</title>
+  <meta name="description" content="Explore my applications built to improve productivity and health with modern technology. Download Todos and Fitness Tracker APKs." />
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          screens: {
+            xs: '420px',
+          },
+          colors: {
+            primary: { DEFAULT: '#6366f1', light: '#818cf8' },
+            secondary: { DEFAULT: '#a855f7', light: '#c084fc' },
+            accent: { DEFAULT: '#06b6d4' },
+            dark: '#0a0a1a',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+      corePlugins: {
+        preflight: false,
+      },
+    }
+  </script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Three.js Canvas -->
+  <canvas id="three-canvas"></canvas>
+
+  <!-- Mobile Overlay -->
+  <div id="mobile-overlay" class="mobile-overlay"></div>
+
+  <!-- Mobile Menu -->
+  <nav id="mobile-menu" class="mobile-menu">
+    <a href="#apps"><i class="fas fa-th-large mr-3 w-5"></i>Apps</a>
+    <a href="#about"><i class="fas fa-user mr-3 w-5"></i>About</a>
+    <a href="#social"><i class="fas fa-share-nodes mr-3 w-5"></i>Social</a>
+    <a href="#download"><i class="fas fa-download mr-3 w-5"></i>Download</a>
+    <a href="https://santhoshh-maax.github.io/portfolio/" target="_blank" rel="noopener noreferrer" class="mt-4">
+      <span class="btn-primary w-full justify-center text-sm">Portfolio <i class="fas fa-arrow-up-right-from-square ml-1"></i></span>
+    </a>
+  </nav>
+
+  <div class="content">
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="nav-glass fixed top-0 left-0 w-full z-50 px-4 sm:px-8 lg:px-16" style="transition: background 0.3s ease;">
+      <div class="max-w-6xl mx-auto flex items-center justify-between h-16 md:h-20">
+        <a href="#" class="flex items-center gap-2.5 text-xl font-extrabold tracking-tight">
+          <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white text-sm font-bold">SP</span>
+          <span class="hidden xs:inline">SP Apps</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#apps" class="nav-link">Apps</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#social" class="nav-link">Social</a>
+          <a href="#download" class="nav-link">Download</a>
+          <a href="https://santhoshh-maax.github.io/portfolio/" target="_blank" rel="noopener noreferrer" class="btn-primary text-sm py-2 px-5">Portfolio <i class="fas fa-arrow-up-right-from-square ml-1 text-xs"></i></a>
+        </div>
+        <button id="hamburger" class="hamburger md:hidden" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero-section" id="hero">
+      <div class="max-w-4xl mx-auto fade-up">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-sm text-primary-light font-medium mb-6">
+          <span class="w-2 h-2 rounded-full bg-gradient-to-r from-primary to-secondary animate-pulse"></span>
+          Mobile Applications
+        </div>
+        <h1 class="hero-title">
+          Download My <span class="gradient-text">Applications</span>
+        </h1>
+        <p class="hero-subtitle">
+          Explore my applications built to improve productivity and health with modern technology.
+        </p>
+        <div class="hero-cta">
+          <a href="#apps" class="btn-primary text-lg py-3.5 px-8">
+            Explore Apps <i class="fas fa-arrow-down ml-2"></i>
+          </a>
+          <a href="#download" class="btn-outline text-lg py-3.5 px-8">
+            Download Now <i class="fas fa-download ml-2"></i>
+          </a>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <div class="mouse"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- ==================== APPS SECTION ==================== -->
+    <section id="apps" class="px-4 sm:px-8 lg:px-16 py-20 md:py-28">
+      <div class="max-w-6xl mx-auto">
+        <div class="fade-up text-center mb-12">
+          <h2 class="section-title">My <span class="gradient-text">Applications</span></h2>
+          <p class="section-subtitle">Premium productivity and health tools built with modern technology</p>
+        </div>
+
+        <!-- App 1: Todos -->
+        <div class="fade-left delay-100 mb-10">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-8 items-start">
+            <div class="app-card flex flex-col h-full">
+              <div class="app-icon todos"><i class="fas fa-check-double"></i></div>
+              <h3 class="app-name">Todos</h3>
+              <p class="app-desc">A productivity application designed to help users organize daily activities and improve productivity.</p>
+              <div class="app-meta">
+                <span><i class="fas fa-tag text-primary-light"></i> v0.1.0</span>
+                <span><i class="fas fa-hard-drive text-primary-light"></i> 4.2 MB</span>
+                <span><i class="fas fa-calendar text-primary-light"></i> 2025</span>
+              </div>
+              <div class="feature-list">
+                <span class="feature-tag"><i class="fas fa-plus-circle mr-1"></i> Add tasks</span>
+                <span class="feature-tag"><i class="fas fa-pen mr-1"></i> Update tasks</span>
+                <span class="feature-tag"><i class="fas fa-trash-can mr-1"></i> Delete tasks</span>
+                <span class="feature-tag"><i class="fas fa-chart-line mr-1"></i> Daily tracking</span>
+              </div>
+              <div class="mt-auto pt-4 flex flex-wrap gap-3">
+                <a href="https://github.com/santhoshh-maax/Todo-App/releases/latest" target="_blank" rel="noopener noreferrer" class="btn-download flex-1 sm:flex-none text-center justify-center text-sm sm:text-base">
+                  <i class="fas fa-download"></i> Download APK
+                </a>
+                <button onclick="document.getElementById('gallery-todos').scrollIntoView({behavior:'smooth', block:'start'})" class="btn-outline text-sm sm:text-base flex-1 sm:flex-none justify-center">
+                  <i class="fas fa-images"></i> Screenshots
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Todos Screenshots -->
+          <div class="mt-5">
+            <div class="glass rounded-2xl p-4 md:p-5" id="gallery-todos">
+              <div class="flex items-center gap-2 mb-4">
+                <span class="w-6 h-6 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white text-xs"><i class="fas fa-check-double"></i></span>
+                <h4 class="text-sm font-semibold text-gray-300">Todos Screenshots</h4>
+              </div>
+              <div class="screenshot-gallery px-0">
+                <div class="screenshot-item" data-modal-target="modal-todos" data-screenshot data-bg="assets/images/todo_1.jpeg">
+                  <img src="assets/images/todo_1.jpeg" alt="Todos Screenshot 1" loading="lazy" />
+                </div>
+                <div class="screenshot-item" data-modal-target="modal-todos" data-screenshot data-bg="assets/images/todo_2.jpeg">
+                  <img src="assets/images/todo_2.jpeg" alt="Todos Screenshot 2" loading="lazy" />
+                </div>
+                <div class="screenshot-item" data-modal-target="modal-todos" data-screenshot data-bg="assets/images/todo_3.jpeg">
+                  <img src="assets/images/todo_3.jpeg" alt="Todos Screenshot 3" loading="lazy" />
+                </div>
+                <div class="screenshot-item" data-modal-target="modal-todos" data-screenshot data-bg="assets/images/todo_4.jpeg">
+                  <img src="assets/images/todo_4.jpeg" alt="Todos Screenshot 4" loading="lazy" />
+                </div>
+                <div class="screenshot-item" data-modal-target="modal-todos" data-screenshot data-bg="assets/images/todo_5.jpeg">
+                  <img src="assets/images/todo_5.jpeg" alt="Todos Screenshot 5" loading="lazy" />
+                </div>
+                <div class="screenshot-item" data-modal-target="modal-todos" data-screenshot data-bg="assets/images/todo_6.jpeg">
+                  <img src="assets/images/todo_6.jpeg" alt="Todos Screenshot 6" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- App 2: Fitness Tracker -->
+        <div class="fade-right delay-200">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-8 items-start">
+            <div class="app-card flex flex-col h-full">
+              <div class="app-icon fitness"><i class="fas fa-heart-pulse"></i></div>
+              <h3 class="app-name">Fitness Tracker</h3>
+              <p class="app-desc">A health and fitness application designed to help users monitor daily activity and improve wellness.</p>
+              <div class="app-meta">
+                <span><i class="fas fa-tag text-primary-light"></i> v0.1.0</span>
+                <span><i class="fas fa-hard-drive text-primary-light"></i> 5.8 MB</span>
+                <span><i class="fas fa-calendar text-primary-light"></i> 2025</span>
+              </div>
+              <div class="feature-list">
+                <span class="feature-tag"><i class="fas fa-shoe-prints mr-1"></i> Step tracking</span>
+                <span class="feature-tag"><i class="fas fa-weight mr-1"></i> BMI calculation</span>
+                <span class="feature-tag"><i class="fas fa-droplet mr-1"></i> Water intake</span>
+                <span class="feature-tag"><i class="fas fa-lightbulb mr-1"></i> Daily insights</span>
+              </div>
+              <div class="mt-auto pt-4 flex flex-wrap gap-3">
+                <a href="https://github.com/santhoshh-maax/Fitness-Tracker/releases/latest" target="_blank" rel="noopener noreferrer" class="btn-download flex-1 sm:flex-none text-center justify-center text-sm sm:text-base">
+                  <i class="fas fa-download"></i> Download APK
+                </a>
+                <button onclick="document.getElementById('gallery-fitness').scrollIntoView({behavior:'smooth', block:'start'})" class="btn-outline text-sm sm:text-base flex-1 sm:flex-none justify-center">
+                  <i class="fas fa-images"></i> Screenshots
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Fitness Screenshots -->
+          <div class="mt-5">
+            <div class="glass rounded-2xl p-4 md:p-5" id="gallery-fitness">
+              <div class="flex items-center gap-2 mb-4">
+                <span class="w-6 h-6 rounded-lg bg-gradient-to-br from-secondary to-pink-500 flex items-center justify-center text-white text-xs"><i class="fas fa-heart-pulse"></i></span>
+                <h4 class="text-sm font-semibold text-gray-300">Fitness Tracker Screenshots</h4>
+              </div>
+              <div class="screenshot-gallery px-0">
+                <div class="screenshot-item" data-modal-target="modal-fitness" data-screenshot data-bg="assets/images/fitness_1.jpeg">
+                  <img src="assets/images/fitness_1.jpeg" alt="Fitness Screenshot 1" loading="lazy" />
+                </div>
+                <div class="screenshot-item" data-modal-target="modal-fitness" data-screenshot data-bg="assets/images/fitness_2.jpeg">
+                  <img src="assets/images/fitness_2.jpeg" alt="Fitness Screenshot 2" loading="lazy" />
+                </div>
+                <div class="screenshot-item" data-modal-target="modal-fitness" data-screenshot data-bg="assets/images/fitness_3.jpeg">
+                  <img src="assets/images/fitness_3.jpeg" alt="Fitness Screenshot 3" loading="lazy" />
+                </div>
+                <div class="screenshot-item" data-modal-target="modal-fitness" data-screenshot data-bg="assets/images/fitness_4.jpeg">
+                  <img src="assets/images/fitness_4.jpeg" alt="Fitness Screenshot 4" loading="lazy" />
+                </div>
+                <div class="screenshot-item" data-modal-target="modal-fitness" data-screenshot data-bg="assets/images/fitness_5.jpeg">
+                  <img src="assets/images/fitness_5.jpeg" alt="Fitness Screenshot 5" loading="lazy" />
+                </div>
+                <div class="screenshot-item" data-modal-target="modal-fitness" data-screenshot data-bg="assets/images/fitness_6.jpeg">
+                  <img src="assets/images/fitness_6.jpeg" alt="Fitness Screenshot 6" loading="lazy" />
+                </div>
+                <div class="screenshot-item" data-modal-target="modal-fitness" data-screenshot data-bg="assets/images/fitness_7.jpeg">
+                  <img src="assets/images/fitness_7.jpeg" alt="Fitness Screenshot 7" loading="lazy" />
+                </div>
+                <div class="screenshot-item" data-modal-target="modal-fitness" data-screenshot data-bg="assets/images/fitness_8.jpeg">
+                  <img src="assets/images/fitness_8.jpeg" alt="Fitness Screenshot 8" loading="lazy" />
+                </div>
+                <div class="screenshot-item" data-modal-target="modal-fitness" data-screenshot data-bg="assets/images/fitness_9.jpeg">
+                  <img src="assets/images/fitness_9.jpeg" alt="Fitness Screenshot 9" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== DOWNLOAD SECTION ==================== -->
+    <section id="download" class="px-4 sm:px-8 lg:px-16 py-20 md:py-28">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="fade-up">
+          <h2 class="section-title">Ready to <span class="gradient-text">Download</span>?</h2>
+          <p class="section-subtitle">Get the latest versions of my applications and start improving your productivity and health today.</p>
+        </div>
+        <div class="download-buttons fade-up delay-100">
+          <a href="https://github.com/santhoshh-maax/Todo-App/releases/latest" target="_blank" rel="noopener noreferrer" class="btn-download text-sm sm:text-base px-6 sm:px-10">
+            <i class="fas fa-download"></i> Download Todos APK
+            <span class="text-xs opacity-60">v0.1.0</span>
+          </a>
+          <a href="https://github.com/santhoshh-maax/Fitness-Tracker/releases/latest" target="_blank" rel="noopener noreferrer" class="btn-download text-sm sm:text-base px-6 sm:px-10" style="background:linear-gradient(135deg, #a855f7, #ec4899)">
+            <i class="fas fa-download"></i> Download Fitness APK
+            <span class="text-xs opacity-60">v0.1.0</span>
+          </a>
+        </div>
+        <div class="flex items-center justify-center gap-3 mt-8 text-sm text-gray-500 fade-up delay-200">
+          <i class="fas fa-shield-alt text-primary-light"></i>
+          <span>Secure downloads from GitHub Releases</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section id="about" class="px-4 sm:px-8 lg:px-16 py-20 md:py-28 bg-white/[0.01]">
+      <div class="max-w-6xl mx-auto">
+        <div class="fade-up text-center mb-12">
+          <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+          <p class="section-subtitle">The developer behind these applications</p>
+        </div>
+        <div class="about-card fade-up delay-100">
+          <div class="about-avatar">SP</div>
+          <h3 class="about-name">Santhosh</h3>
+          <p class="about-role"><i class="fas fa-graduation-cap mr-2"></i>B.E (CSE) | IoT, Robotics & Automation</p>
+          <p class="about-bio">
+            A passionate software developer with expertise in Android development, IoT systems, and automation. I build applications that combine cutting-edge technology with intuitive user experiences to solve real-world problems.
+          </p>
+          <div class="flex flex-wrap gap-3 justify-center">
+            <a href="https://santhoshh-maax.github.io/portfolio/" target="_blank" rel="noopener noreferrer" class="btn-primary">
+              <i class="fas fa-briefcase"></i> View Portfolio
+            </a>
+            <a href="mailto:santhoshpanneer03@gmail.com" class="btn-outline">
+              <i class="fas fa-envelope"></i> Contact Me
+            </a>
+          </div>
+          <div class="flex flex-wrap items-center justify-center gap-3 mt-5">
+            <a href="https://github.com/sponsors/santhoshh-maax" target="_blank" class="btn-outline text-sm gap-2" style="border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);">
+              💖 Sponsor on GitHub
+            </a>
+            <a href="https://ko-fi.com/N4N51YFMS9" target="_blank" class="btn-outline text-sm gap-2" style="border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);color:#29abe0;">
+              ☕ Support me on Ko-fi
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SOCIAL SECTION ==================== -->
+    <section id="social" class="px-4 sm:px-8 lg:px-16 py-20 md:py-28">
+      <div class="max-w-6xl mx-auto text-center">
+        <div class="fade-up">
+          <h2 class="section-title">Connect With <span class="gradient-text">Me</span></h2>
+          <p class="section-subtitle">Follow me on social media or reach out via email</p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-4 md:gap-6 fade-up delay-100">
+          <a href="https://www.linkedin.com/in/santhosh-p-547721358/" target="_blank" rel="noopener noreferrer" class="social-card linkedin" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://www.instagram.com/santhosh_ps22/" target="_blank" rel="noopener noreferrer" class="social-card instagram" title="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="mailto:santhoshpanneer03@gmail.com" class="social-card gmail" title="Gmail">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://santhoshh-maax.github.io/portfolio/" target="_blank" rel="noopener noreferrer" class="social-card portfolio" title="Portfolio">
+            <i class="fas fa-briefcase"></i>
+          </a>
+          <a href="https://github.com/santhoshh-maax" target="_blank" rel="noopener noreferrer" class="social-card" title="GitHub" style="--hover-color:#333">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+        <div class="mt-16 p-6 md:p-8 glass rounded-2xl fade-up delay-200" style="max-width:500px;margin-left:auto;margin-right:auto;">
+          <div class="flex items-center gap-4 text-left">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white shrink-0">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+              <p class="text-sm text-gray-400">Email me directly</p>
+              <a href="mailto:santhoshpanneer03@gmail.com" class="text-primary-light hover:text-white transition-colors font-medium break-all">santhoshpanneer03@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+      <div class="max-w-6xl mx-auto">
+        <div class="footer-links">
+          <a href="#apps">Apps</a>
+          <a href="#about">About</a>
+          <a href="#social">Social</a>
+          <a href="#download">Download</a>
+          <a href="https://santhoshh-maax.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Portfolio</a>
+        </div>
+        <div class="flex justify-center gap-4 mb-4">
+          <a href="https://www.linkedin.com/in/santhosh-p-547721358/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-primary-light transition-colors text-lg"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.instagram.com/santhosh_ps22/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-primary-light transition-colors text-lg"><i class="fab fa-instagram"></i></a>
+          <a href="mailto:santhoshpanneer03@gmail.com" class="text-gray-500 hover:text-primary-light transition-colors text-lg"><i class="fas fa-envelope"></i></a>
+          <a href="https://github.com/santhoshh-maax" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-primary-light transition-colors text-lg"><i class="fab fa-github"></i></a>
+        </div>
+        <p class="footer-copy">
+          &copy; <span id="year"></span> SP Apps. Built with <i class="fas fa-heart text-primary-light"></i> by Santhosh. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ==================== MODALS ==================== -->
+
+  <!-- Todos Modal -->
+  <div class="modal" id="modal-todos">
+    <button class="modal-close" aria-label="Close"><i class="fas fa-xmark"></i></button>
+    <img src="" alt="Screenshot" id="modal-todos-img" style="max-width:90%;max-height:90vh;border-radius:12px;object-fit:contain;" />
+  </div>
+
+  <!-- Fitness Modal -->
+  <div class="modal" id="modal-fitness">
+    <button class="modal-close" aria-label="Close"><i class="fas fa-xmark"></i></button>
+    <img src="" alt="Screenshot" id="modal-fitness-img" style="max-width:90%;max-height:90vh;border-radius:12px;object-fit:contain;" />
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
